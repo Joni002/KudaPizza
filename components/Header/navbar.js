@@ -15,9 +15,10 @@ const Navbar = () => {
 
                 <CartBtn/>
 
-                <Box ml={6} display={{base: 'none', lg: 'inline-block'}}>
+                {/* вибрав другий концепт */}
+                {/* <Box ml={6} display={{base: 'none', lg: 'inline-block'}}>
                     <UserBtn/>
-                </Box>
+                </Box> */}
 
                 <Box ml={2} display={{base: 'inline-block', lg: 'none'}}>
                     <MenuBtn/>

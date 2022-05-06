@@ -1,4 +1,7 @@
-import { Box, Button, Icon } from "@chakra-ui/react"
+import { Box, Button, Divider, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Icon, Text } from "@chakra-ui/react"
+import { useDisclosure } from '@chakra-ui/react'
+import React, { useRef } from 'react';
+import ItemCardMini from "../Content/Item/itemCardMini";
 
 const CircleIcon = () => (
     <Icon width="19" height="19" viewBox="0 0 24 22">
@@ -9,9 +12,21 @@ const CircleIcon = () => (
   )
 
 const CartBtn = () => {
+    const item = {
+        title: "Чікен Солодкий Чілі",
+        img: "https://i.ibb.co/DYdXKSt/Rectangle-4.png",
+        ingredients: ["Курка", "Гриби", "Перець Халапеньо", "Сир Моцарелла", "Томатний соуc"],
+        cost: "120"
+      }
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const btnRef = useRef()
+
     return (
+        <>
         <Box flex={1} align='right'>
-            <Button backgroundColor='#FF7010'
+            <Button ref={btnRef}
+                    onClick={onOpen}
+                    backgroundColor='#FF7010'
                     _hover={{ bg: 'orange.500' }} 
                     _active={{
                         bg: 'orange.300',
@@ -25,6 +40,33 @@ const CartBtn = () => {
 
             </Button>
         </Box>
+        
+        <Drawer
+            size='sm'
+            isOpen={isOpen}
+            placement='right'
+            onClose={onClose}
+            finalFocusRef={btnRef}
+        >
+            <DrawerOverlay backdropFilter={'blur(10px) brightness(110%)'}/>
+            <DrawerContent>
+            <DrawerCloseButton size='lg' _focus={'nune'} mt={3}/>
+            <DrawerHeader mt={3} fontSize='2xl'>Ваше замовлення</DrawerHeader>
+
+            <DrawerBody>
+                
+                <ItemCardMini title={item.title} img={item.img} ingredients={item.ingredients} cost={item.cost}/>
+
+            </DrawerBody>
+
+            <Divider/>
+            <DrawerFooter display='flex' justifyContent='space-between' py='3' px='4'>
+                <Text fontWeight='600' color='#FF7010'>Разом: 450 ₴</Text>
+                <Button colorScheme='orange' bg='#FF7010'fontWeight='normal' fontSize='sm'>Оформити замовлення</Button>
+            </DrawerFooter>
+            </DrawerContent>
+        </Drawer>
+        </>
     )
 }
 
