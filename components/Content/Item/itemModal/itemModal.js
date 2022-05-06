@@ -6,6 +6,8 @@ import ModalIngredient from "./modalIngredient"
 import ModalAddIngredient from "./modalAddIngredient"
 import DoughRadio from "./doughRadio";
 import SizeRadio from "./sizeRadio";
+import { useDispatch } from 'react-redux';
+import { delIngredient, addIngredient } from '../../../../redux/order'
 
 
 const ItemModal = (props) => {
@@ -24,7 +26,9 @@ const ItemModal = (props) => {
 
     const [checkedDel, setCheckedDel] = useState();
     const [checkedAdd, setCheckedAdd] = useState();
-    console.log(checkedDel)
+    const dispatch = useDispatch();
+    dispatch(delIngredient({checkedDel}))
+    dispatch(addIngredient({checkedAdd}))
 
     const { getCheckboxProps } = useCheckboxGroup({
         onChange: setCheckedDel,
