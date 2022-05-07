@@ -1,15 +1,21 @@
 import { HStack, useRadioGroup } from "@chakra-ui/react"
+import { useState } from "react"
+import { useDispatch } from "react-redux"
+import { size } from "../../../../redux/order"
 import ModalRadio from "./modalRadio"
 
 
 const SizeRadio = () => {
-    const options = ['20 см', '28 см', '33 см']
+  const options = ['20 см', '28 см', '33 см']
 
+  const [pizzaSize, setPizzaSize] = useState()
   const { getRootProps, getRadioProps } = useRadioGroup({
     name: 'dought',
     defaultValue: '33 см',
-    onChange: console.log,
+    onChange: setPizzaSize,
   })
+  const dispatch = useDispatch();
+  dispatch(size({pizzaSize}))
 
   const group = getRootProps()
 

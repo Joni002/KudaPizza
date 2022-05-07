@@ -10,9 +10,6 @@ const ItemCard = (props) => {
     const lengthIngredients = title.length <= 23 ? 2 : 1
     const dispatch = useDispatch();
     
-
-    //() => {dispatch(initProduct({productObj}))}
-
     return(
         <>
             <Box onClick={onOpen}>

@@ -1,13 +1,10 @@
 import { InfoOutlineIcon } from "@chakra-ui/icons"
 import {MdLocalFireDepartment} from 'react-icons/md'
-import { Box, Text, Flex, Heading, Icon, Modal, ModalBody, ModalCloseButton, ModalContent, ModalOverlay, Spacer, Image, useCheckboxGroup, Center, Button } from "@chakra-ui/react"
-import React, { useState } from "react";
-import ModalIngredient from "./modalIngredient"
-import ModalAddIngredient from "./modalAddIngredient"
+import { Box, Text, Flex, Heading, Icon, Modal, ModalBody, ModalCloseButton, ModalContent, ModalOverlay, Spacer, Image, Center, Button } from "@chakra-ui/react"
 import DoughRadio from "./doughRadio";
 import SizeRadio from "./sizeRadio";
-import { useDispatch } from 'react-redux';
-import { delIngredient, addIngredient } from '../../../../redux/order'
+import DelIngredients from "./delIngredients";
+import AddIngredients from "./addIngredients";
 
 
 const ItemModal = (props) => {
@@ -23,20 +20,6 @@ const ItemModal = (props) => {
         "Бекон": "https://i.ibb.co/pJtrj5y/becon.png",
         "Гриби": "https://i.ibb.co/PZLTwd2/gribi.png",
     }
-
-    const [checkedDel, setCheckedDel] = useState();
-    const [checkedAdd, setCheckedAdd] = useState();
-    const dispatch = useDispatch();
-    dispatch(delIngredient({checkedDel}))
-    dispatch(addIngredient({checkedAdd}))
-
-    const { getCheckboxProps } = useCheckboxGroup({
-        onChange: setCheckedDel,
-    })
-    // let pushItem = productObj
-    // pushItem.delIngredients = checkedDel
-    // pushItem.addIngredients = checkedAdd
-    // console.info(pushItem)
 
     return(
         <Modal isOpen={isOpen} onClose={onClose} size='4xl' motionPreset='slideInBottom'>
@@ -70,26 +53,7 @@ const ItemModal = (props) => {
                             <InfoOutlineIcon boxSize={6} color='#A5A5A5'/>
                         </Flex>
 
-                        <Flex my={4} overflowX='scroll'
-                        css={{
-                            '&::-webkit-scrollbar': {
-                                height: '10px',
-                            },
-                            '&::-webkit-scrollbar-thumb': {
-                                background: '#a8a8a899',
-                                borderRadius: '5px',
-                            },
-                          }}>
-
-                            {productObj.ingredients.map((value) => {
-                                
-                                const checkbox = getCheckboxProps({ value });
-                                return (
-                                    <ModalIngredient key={value} {...checkbox} value={value} icon={indredientsIcon[value]}/>
-                                );
-                            })}
-
-                        </Flex>
+                        <DelIngredients productObj={productObj} indredientsIcon={indredientsIcon}/>
                         
                         <DoughRadio/>
                         <SizeRadio/>
@@ -100,31 +64,9 @@ const ItemModal = (props) => {
                             Добавити до піци
                         </Text>
 
-                        <Flex overflowX='scroll' 
-                        css={{
-                            '&::-webkit-scrollbar': {
-                                height: '10px',
-                            },
-                            '&::-webkit-scrollbar-thumb': {
-                                background: '#a8a8a899',
-                                borderRadius: '5px',
-                            },
-                          }}
-                        mb={{base: 24, md: 0}}>
+                        <AddIngredients productObj={productObj} indredientsIcon={indredientsIcon}/>
 
-                            {productObj.ingredients.map((value) => {
-                                const { getCheckboxProps } = useCheckboxGroup({
-                                    onChange: setCheckedAdd
-                                  });
-                                const checkbox = getCheckboxProps({ value });
-                                return (
-                                    <ModalAddIngredient key={value} {...checkbox} value={value} icon={indredientsIcon[value]}/>
-                                );
-                            })}
-
-                        </Flex>
-
-                        <Flex justify='space-between' w='100%' py={{base: 3, md: 0}} mt={3} pr={{base: 3, md: 0}} bottom={{base: '0px', md: 'auto'}} position={{base: 'fixed', md: 'relative'}} bg={{base: '#fff', md: 'none'}}  mb={{base: 0, md: 4}} borderTopWidth={{base: '1px', md: 0}} borderTopColor='#F0F0F0'>
+                        <Flex justify='space-between' w='100%' py={{base: 3, md: 0}} mt={3} pl={{base: 3, md: 0}} bottom={{base: '0px', md: 'auto'}} left={{base: 0, md: 'auto'}} position={{base: 'fixed', md: 'relative'}} bg={{base: '#fff', md: 'none'}}  mb={{base: 0, md: 4}} borderTopWidth={{base: '1px', md: 0}} borderTopColor='#F0F0F0'>
                             <Text fontWeight='700' color='#FF7010' fontSize={'xl'}>
                                 Ціна: {cost} ₴
                             </Text>
