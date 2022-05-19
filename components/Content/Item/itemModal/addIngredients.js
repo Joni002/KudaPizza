@@ -2,16 +2,19 @@ import { Flex, useCheckboxGroup } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
 import ModalAddIngredient from "./modalAddIngredient";
 import { addIngredient } from '../../../../redux/order'
+import { newCost } from '../../../../redux/order'
 import { useState } from "react";
 
 const AddIngredients = (props) => {
-    const { productObj, indredientsIcon } = props
+    const { productObj, indredientsIcon, cost } = props
     const [checkedAdd, setCheckedAdd] = useState();
+    const [NewCost, setNewCost] = useState(cost)
     const { getCheckboxProps } = useCheckboxGroup({
-        onChange: setCheckedAdd
+        onChange: (prop) => {setCheckedAdd(prop), setNewCost(cost + prop.length * 50)},
     });
     const dispatch = useDispatch();
     dispatch(addIngredient({checkedAdd}))
+    dispatch(newCost(NewCost))
 
     return(
         <Flex my={4} overflowX='scroll'

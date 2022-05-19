@@ -1,21 +1,25 @@
 import { HStack, useRadioGroup } from "@chakra-ui/react"
 import { useState } from "react"
 import { useDispatch } from "react-redux"
-import { dought } from "../../../../redux/order"
+import { dought, newCost } from "../../../../redux/order"
 import ModalRadio from "./modalRadio"
 
 
-const DoughRadio = () => {
+const DoughRadio = (props) => {
+  const { cost } = props
   const options = ['Традиційне', 'Тонке']
 
-  const [pizzaDought, setPizzaDought] = useState()
+  const [NewCost, setNewCost] = useState(cost)
+
+  const [pizzaDought, setPizzaDought] = useState('Традиційне')
   const { getRootProps, getRadioProps } = useRadioGroup({
     name: 'dought',
     defaultValue: 'Традиційне',
-    onChange: setPizzaDought,
+    onChange: (prop) => {setPizzaDought(prop), setNewCost(NewCost - 20)},
   })
   const dispatch = useDispatch()
   dispatch(dought({pizzaDought}))
+  dispatch(newCost(NewCost))
 
   const group = getRootProps()
 

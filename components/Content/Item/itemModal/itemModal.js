@@ -5,10 +5,14 @@ import DoughRadio from "./doughRadio";
 import SizeRadio from "./sizeRadio";
 import DelIngredients from "./delIngredients";
 import AddIngredients from "./addIngredients";
+import { useSelector } from "react-redux";
+import { selectCost } from "../../../../redux/order";
 
 
 const ItemModal = (props) => {
     const {isOpen, onClose, newBadge, title, img, cost, productObj} = props
+    const Cost = useSelector(selectCost)
+
 
     const indredientsIcon = {
         "Курка": "https://i.ibb.co/80YV34s/chicken.png",
@@ -55,8 +59,8 @@ const ItemModal = (props) => {
 
                         <DelIngredients productObj={productObj} indredientsIcon={indredientsIcon}/>
                         
-                        <DoughRadio/>
-                        <SizeRadio/>
+                        <DoughRadio cost={cost}/>
+                        <SizeRadio cost={cost}/>
 
                         <Text mt={4} mb={3} 
                         fontSize={'md'}
@@ -64,11 +68,11 @@ const ItemModal = (props) => {
                             Добавити до піци
                         </Text>
 
-                        <AddIngredients productObj={productObj} indredientsIcon={indredientsIcon}/>
+                        <AddIngredients productObj={productObj} indredientsIcon={indredientsIcon} cost={cost}/>
 
                         <Flex justify='space-between' w='100%' py={{base: 3, md: 0}} mt={3} pl={{base: 3, md: 0}} bottom={{base: '0px', md: 'auto'}} left={{base: 0, md: 'auto'}} position={{base: 'fixed', md: 'relative'}} bg={{base: '#fff', md: 'none'}}  mb={{base: 0, md: 4}} borderTopWidth={{base: '1px', md: 0}} borderTopColor='#F0F0F0'>
                             <Text fontWeight='700' color='#FF7010' fontSize={'xl'}>
-                                Ціна: {cost} ₴
+                                Ціна: {Cost} ₴
                             </Text>
                             
                             <Button right={4} px={8} backgroundColor='#FF7010'
