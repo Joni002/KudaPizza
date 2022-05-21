@@ -23,7 +23,7 @@ const ItemCardMini = (props) => {
             borderColor='#F0F0F0'
             borderRadius='xl' 
             overflow='hidden'
-            mb={{base: 3, sm: 0}}
+            mb={3}
             fontSize={'sm'}
             display='flex'>
 
@@ -37,6 +37,7 @@ const ItemCardMini = (props) => {
                     <Box>
                         <Text fontSize='md' 
                         fontWeight='500' 
+                        noOfLines={1}
                         mb={1}>
 
                             {title}

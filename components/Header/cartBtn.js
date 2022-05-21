@@ -1,6 +1,7 @@
 import { Box, Button, Divider, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Icon, Text } from "@chakra-ui/react"
 import { useDisclosure } from '@chakra-ui/react'
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
+import { useSelector } from "react-redux";
 import ItemCardMini from "../Content/Item/itemCardMini";
 
 const CircleIcon = () => (
@@ -12,12 +13,12 @@ const CircleIcon = () => (
   )
 
 const CartBtn = () => {
-    const item = {
-        title: "Чікен Солодкий Чілі",
-        img: "https://i.ibb.co/DYdXKSt/Rectangle-4.png",
-        ingredients: ["Курка", "Гриби", "Перець Халапеньо", "Сир Моцарелла", "Томатний соуc"],
-        cost: "120"
-      }
+
+    const Orders = useSelector((state) => state.cart.orders)
+    let allPrise = 0
+    
+    Orders.map(order => allPrise += (order.newCost ? order.newCost : order.productObj.cost))
+
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = useRef()
 
@@ -36,7 +37,7 @@ const CartBtn = () => {
                     color='white' 
                     leftIcon={<CircleIcon/>}>
             {/* value */}
-                0 ₴
+                {allPrise} ₴
 
             </Button>
         </Box>
@@ -55,13 +56,16 @@ const CartBtn = () => {
 
             <DrawerBody>
                 
-                <ItemCardMini title={item.title} img={item.img} ingredients={item.ingredients} cost={item.cost}/>
+                {Orders.length == 0 ? 
+                <h1>111111111</h1> 
+                :
+                Orders.map(order => <ItemCardMini title={order.productObj.title} img={order.productObj.img} cost={order.newCost ? order.newCost : order.productObj.cost}/>)}
 
             </DrawerBody>
 
             <Divider/>
             <DrawerFooter display='flex' justifyContent='space-between' py='3' px='4'>
-                <Text fontWeight='600' color='#FF7010'>Разом: 450 ₴</Text>
+                <Text fontWeight='600' color='#FF7010'>Разом: {allPrise} ₴</Text>
                 <Button colorScheme='orange' bg='#FF7010'fontWeight='normal' fontSize='sm'>Оформити замовлення</Button>
             </DrawerFooter>
             </DrawerContent>

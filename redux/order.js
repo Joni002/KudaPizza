@@ -10,30 +10,28 @@ export const orderSlice = createSlice({
     initProduct: (state, action) => {
         state.getProduct = action.payload
         state.pushProduct = state.getProduct
-        // state.pushProduct[newCost] = action.payload.productObj.cost
-        // state.pushProduct[dought] = 'Традиційне'
+        // state.pushProduct[newCost] = state.getProduct.productObj.cost
     },
     delIngredient: (state, action) => {
-        state.pushProduct[delIngredient] = action.payload
+        state.pushProduct.delIngredient = action.payload
     },
     addIngredient: (state, action) => {
-        state.pushProduct[addIngredient] = action.payload
+        state.pushProduct.addIngredient = action.payload
     },
     size: (state, action) => {
-        state.pushProduct[size] = action.payload
+        state.pushProduct.size = action.payload
     },
     dought: (state, action) => {
-        state.pushProduct[dought] = action.payload
+        state.pushProduct.dought = action.payload
     },
     newCost: (state, action) => {
-        state.pushProduct[newCost] = action.payload
+        state.pushProduct.newCost = action.payload
     }
    },
 })
 
 export const { initProduct, delIngredient, addIngredient, size, dought, newCost } = orderSlice.actions
 
-export const selectCost = (state) => state.order.pushProduct[newCost]
-export const selectPushProduct = (state) => state.order.value
+export const selectCost = (state) => state.order.pushProduct.newCost
 
 export default orderSlice.reducer

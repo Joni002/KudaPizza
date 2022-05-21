@@ -7,12 +7,13 @@ import DelIngredients from "./delIngredients";
 import AddIngredients from "./addIngredients";
 import { useSelector } from "react-redux";
 import { selectCost } from "../../../../redux/order";
+import PushButton from "./pushButton";
 
 
 const ItemModal = (props) => {
     const {isOpen, onClose, newBadge, title, img, cost, productObj} = props
     const Cost = useSelector(selectCost)
-
+    console.log(Cost)
 
     const indredientsIcon = {
         "Курка": "https://i.ibb.co/80YV34s/chicken.png",
@@ -59,7 +60,7 @@ const ItemModal = (props) => {
 
                         <DelIngredients productObj={productObj} indredientsIcon={indredientsIcon}/>
                         
-                        <DoughRadio cost={cost}/>
+                        <DoughRadio />
                         <SizeRadio cost={cost}/>
 
                         <Text mt={4} mb={3} 
@@ -74,17 +75,9 @@ const ItemModal = (props) => {
                             <Text fontWeight='700' color='#FF7010' fontSize={'xl'}>
                                 Ціна: {Cost} ₴
                             </Text>
-                            
-                            <Button right={4} px={8} backgroundColor='#FF7010'
-                            _hover={{ bg: 'orange.500' }} 
-                            _active={{
-                                bg: 'orange.300',
-                                borderColor: 'orange.500',
-                            }}
-                            _focus={{boxShadow: 'none'}}
-                            color='white'>
-                                Добавити
-                            </Button>
+
+                            <PushButton onClose={onClose}/>
+
                         </Flex>
 
                     </Flex>

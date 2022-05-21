@@ -1,12 +1,14 @@
-import { Box, Button, Center, Divider, Flex, Image, Spacer, Text, useDisclosure } from "@chakra-ui/react"
+import { Box, Button, Center, Divider, Flex, Image, Spacer, Text, useDisclosure, useToast } from "@chakra-ui/react"
 import { useDispatch } from 'react-redux';
 import { initProduct } from '../../../redux/order'
 import {InfoOutlineIcon} from '@chakra-ui/icons'
 import ItemModal from "./itemModal/itemModal"
+import { addToOrder } from "../../../redux/cart";
 
 const ItemCard = (props) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { newBadge, title, img, ingredients, cost, productObj } = props
+    const toast = useToast()
     const lengthIngredients = title.length <= 23 ? 2 : 1
     const dispatch = useDispatch();
     
@@ -53,7 +55,17 @@ const ItemCard = (props) => {
                         </Box>
                         <Spacer />
                         <Flex>
-                            <Button onClick={e => e.stopPropagation()} display={{base: 'none', sm: 'inline-block'}} backgroundColor='#FF7010'
+                            <Button onClick={e => {dispatch(addToOrder({productObj})); 
+                            e.stopPropagation(); 
+                            toast({
+                                title: 'Піца добавленна!',
+                                description: `Піца добавленна до вашого замовлення:)`,
+                                status: 'success',
+                                position: 'bottom-right',
+                                duration: 3000,
+                                isClosable: true,
+                            })}} 
+                            display={{base: 'none', sm: 'inline-block'}} backgroundColor='#FF7010'
                             size={'md'}
                             _hover={{ bg: 'orange.500' }} 
                             _active={{
