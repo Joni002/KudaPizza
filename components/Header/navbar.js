@@ -7,7 +7,7 @@ import { Container, Box, Flex } from '@chakra-ui/react'
 
 const Navbar = () => {
     return(
-        <Box position='fixed' as='nav' w='100%' bg='#ffffff'  zIndex={1}>
+        <Box position='fixed' as='nav' w='100%' bg='#ffffff' zIndex={1}>
             <Container display='flex' p={2} maxW='container.lg' wrap='wrap' align='center' justify='spase-between'>
                 <Flex align='center' mr={16}>
                     <Logo/>

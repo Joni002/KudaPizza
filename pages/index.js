@@ -1,17 +1,31 @@
-import { Box, Heading } from '@chakra-ui/react'
+import { Box, Container, Heading } from '@chakra-ui/react'
+import Head from 'next/head'
 import ItemsBlock from '../components/Content/Item/itemsBlock'
 import OrderMenu from '../components/Content/OrderMenu/orderMenu'
 import PromoBlock from '../components/Content/Promo/promoBlock'
+import Footer from '../components/Footer/footer'
+import Navbar from '../components/Header/navbar'
 import clientPromise from '../lib/mongodb'
 
 function Home({ isConnected, products }) {
   return (
-    <>
-      <OrderMenu />
-      <PromoBlock />  
-      <Box py={5}><Heading>Піца</Heading></Box>
-      <ItemsBlock isConnected={isConnected} products={products}/>
-    </>
+    <Box as='main' minH='100vh' className='main' bg='#F9F9F9' display='flex' flexDirection='column'>
+      <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+          <title>Kuda Pizza | Home</title>
+      </Head>
+
+      <Navbar/>
+
+      <Container maxW='container.lg' pt={14}>
+        <OrderMenu />
+        <PromoBlock />  
+        <Box py={5}><Heading>Піца</Heading></Box>
+        <ItemsBlock isConnected={isConnected} products={products}/>
+      </Container>
+
+      <Footer/>
+    </Box>
   )
 }
 export default Home

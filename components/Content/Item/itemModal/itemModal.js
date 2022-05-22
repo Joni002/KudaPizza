@@ -13,7 +13,6 @@ import PushButton from "./pushButton";
 const ItemModal = (props) => {
     const {isOpen, onClose, newBadge, title, img, cost, productObj} = props
     const Cost = useSelector(selectCost)
-    console.log(Cost)
 
     const indredientsIcon = {
         "Курка": "https://i.ibb.co/80YV34s/chicken.png",

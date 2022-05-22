@@ -7,7 +7,7 @@ import ModalRadio from "./modalRadio"
 
 const SizeRadio = (props) => {
   const { Cost } = props
-  console.log(Cost)
+
 
   const options = ['20 см', '28 см', '33 см']
 
