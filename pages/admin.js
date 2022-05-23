@@ -12,7 +12,7 @@ const admin = () => {
         <Box as='main' minH='100vh' className='main' bg='#F9F9F9' display='flex' flexDirection='column'>
             <Head>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-                <title>Kuda Pizza | Admin</title>
+                <title>LikePizza | Admin</title>
             </Head>
             <Box position='fixed' as='nav' w='100%' bg='#ffffff' zIndex={1}>
                 <Container display='flex' p={2} maxW='container.lg' wrap='wrap' align='center'>

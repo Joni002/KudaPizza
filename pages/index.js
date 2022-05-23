@@ -12,7 +12,7 @@ function Home({ isConnected, products }) {
     <Box as='main' minH='100vh' className='main' bg='#F9F9F9' display='flex' flexDirection='column'>
       <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-          <title>Kuda Pizza | Home</title>
+          <title>LikePizza | Домашня сторінка</title>
       </Head>
 
       <Navbar/>

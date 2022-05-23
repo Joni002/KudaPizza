@@ -25,7 +25,7 @@ const Logo = (props) => {
             <a>
                 <LogoBox>
                     <Image src={logoImg} width={imgSize} height={imgSize} alt="logo"/>
-                    <Text fontSize={textSize} color='#191919' fontWeight='600' ml={3} align='center'>Куда піца</Text>
+                    <Text fontSize={textSize} color='#191919' fontWeight='600' ml={3} align='center'>LikePizza</Text>
                 </LogoBox>
             </a>
         </Link>

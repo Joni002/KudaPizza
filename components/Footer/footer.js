@@ -33,7 +33,7 @@ const Footer = () => {
                     
                 </Flex>
                 <Flex flexDirection='column'>
-                    <Heading as={'h2'} size="md">Куда піца</Heading>
+                    <Heading as={'h2'} size="md">LikePizza</Heading>
                     <Box mt='22px'>Про компанію</Box>
                     <Box mt='20px'>Угода користувача</Box>
                     <Box mt='20px'>Умови гарантії</Box>
@@ -69,7 +69,7 @@ const Footer = () => {
                 </Flex>
                 <Box display={{base: 'inline-block', md: 'none'}} mt={5}>
                     <Divider mb={3}/>
-                    © Copyright 2022 — Куда Піца
+                    © Copyright 2022 — LikePizza
                 </Box>
             </Container>
         </Box>

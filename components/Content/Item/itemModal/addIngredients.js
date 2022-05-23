@@ -17,7 +17,7 @@ const AddIngredients = (props) => {
     dispatch(newCost(NewCost))
 
     return(
-        <Flex my={4} overflowX='scroll'
+        <Flex my={4} pb={{base: 14, md: 0}} overflowX='scroll'
         css={{
             '&::-webkit-scrollbar': {
                 height: '10px',

@@ -1,4 +1,5 @@
-import { Box, Button, Divider, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Icon, Text } from "@chakra-ui/react"
+import { Box, Button, Divider, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Flex, Icon, Text, Image } from "@chakra-ui/react"
+import Link from 'next/link'
 import { useDisclosure } from '@chakra-ui/react'
 import React, { useRef, useState } from 'react';
 import { useSelector } from "react-redux";
@@ -57,7 +58,10 @@ const CartBtn = () => {
             <DrawerBody>
                 
                 {Orders.length == 0 ? 
-                <h1>111111111</h1> 
+                <Flex h='80%' align='center' justifyContent='center' flexDirection='column'>
+                    <Text fontSize='xl' mb={12}>Ваша карзина порожня:(</Text>
+                    <Image src='https://i.ibb.co/YjsC9WQ/NoCart.png' style={{opacity: 0.4}} width='70%' />
+                </Flex>
                 :
                 Orders.map(order => <ItemCardMini title={order.productObj.title} img={order.productObj.img} cost={order.newCost ? order.newCost : order.productObj.cost}/>)}
 
@@ -66,7 +70,9 @@ const CartBtn = () => {
             <Divider/>
             <DrawerFooter display='flex' justifyContent='space-between' py='3' px='4'>
                 <Text fontWeight='600' color='#FF7010'>Разом: {allPrise} ₴</Text>
-                <Button colorScheme='orange' bg='#FF7010'fontWeight='normal' fontSize='sm'>Оформити замовлення</Button>
+                <Link href='/order'>
+                    <Button colorScheme='orange' bg='#FF7010'fontWeight='normal' fontSize='sm'>Оформити замовлення</Button>
+                </Link>
             </DrawerFooter>
             </DrawerContent>
         </Drawer>
