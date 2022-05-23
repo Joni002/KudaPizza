@@ -29,9 +29,9 @@ const ItemModal = (props) => {
         <Modal isOpen={isOpen} onClose={onClose} size='4xl' motionPreset='slideInBottom'>
             <ModalOverlay backdropFilter={'blur(10px) brightness(110%)'}/>
 
-            <ModalContent mt={{base: 20}} mr={0} my={{base: 0, md: 'auto'}}  borderRadius='3xl' borderBottomRadius={{base: 0, md: '3xl'}} minH={{base: '100%', md: '550px'}} userSelect='none' w={{base: 'full', sm: '2xl', md: '3xl', lg: '4xl'}} overflowX='hidden'>{/* забирає скрол по Х але пришовує полоску вверху ---> */}
-            
-                {/* <Box  display={{base: 'block', sm: 'none'}} mt={-5} w='50%' h='6px' bg='rgba(250, 250, 250, 0.5)' backdropBlur='24px' position='absolute' mx="25%" borderRadius='full'></Box> */}
+            <ModalContent mt={{base: 20}} mr={0} my={{base: 0, md: 'auto'}}  borderRadius='3xl' borderBottomRadius={{base: 0, md: '3xl'}} minH={{base: '100%', md: '550px'}} userSelect='none' w={{base: 'full', sm: '2xl', md: '3xl', lg: '4xl'}} >
+                
+                <Box  display={{base: 'block', sm: 'none'}} mt={-5} w='50%' h='6px' bg='rgba(250, 250, 250, 0.5)' backdropBlur='24px' position='absolute' mx="25%" borderRadius='full'></Box>
 
             <ModalCloseButton display={{base: 'none', lg: 'flex'}} position='absolute' fontSize={'3xl'} color='white' size={'lg'} right={-14} _focus={{boxShadow:'0'}}/>
 
