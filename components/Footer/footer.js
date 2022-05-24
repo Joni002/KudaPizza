@@ -6,7 +6,7 @@ import Logo from "../logo"
 
 const Footer = () => {
     return(
-        <Box userSelect='none'
+        <Box
          as="footer" 
          marginTop='auto'
          display='flex' 

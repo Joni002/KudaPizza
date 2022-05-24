@@ -1,7 +1,7 @@
 import { Box, Button, Flex, Spacer, Image, Text, useNumberInput, Input } from "@chakra-ui/react"
 
 const ItemCardMini = (props) => {
-    const { title, img, cost } = props
+    const { title, img, cost, dought, size } = props
 
     const { getInputProps, getIncrementButtonProps, getDecrementButtonProps } =
     useNumberInput({
@@ -43,7 +43,7 @@ const ItemCardMini = (props) => {
                             {title}
 
                         </Text>
-                        <Text noOfLines={2} fontSize='sm'>Тонке тісто, 33 см</Text>
+                        <Text noOfLines={2} fontSize='sm'>{dought}, {size}</Text>
                     </Box>
                     <Spacer />
                     <Flex justifyContent='space-between'>

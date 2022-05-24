@@ -18,8 +18,8 @@ function Home({ isConnected, products }) {
       <Navbar/>
 
       <Container maxW='container.lg' pt={14}>
-        <OrderMenu />
-        <PromoBlock />  
+        {/* <OrderMenu /> */}
+        <PromoBlock/>
         <Box py={5}><Heading>Піца</Heading></Box>
         <ItemsBlock isConnected={isConnected} products={products}/>
       </Container>

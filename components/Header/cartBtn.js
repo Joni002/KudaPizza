@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Flex, Icon, Text, Image } from "@chakra-ui/react"
+import { Box, Button, Divider, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Flex, Icon, Text, Image, useToast } from "@chakra-ui/react"
 import Link from 'next/link'
 import { useDisclosure } from '@chakra-ui/react'
 import React, { useRef, useState } from 'react';
@@ -22,10 +22,12 @@ const CartBtn = () => {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = useRef()
+    const toast = useToast()
+
 
     return (
         <>
-        <Box flex={1} align='right'>
+        <Box flex={1} align='right' onClick={() => toast.closeAll()}>
             <Button ref={btnRef}
                     onClick={onOpen}
                     backgroundColor='#FF7010'
@@ -63,7 +65,7 @@ const CartBtn = () => {
                     <Image src='https://i.ibb.co/YjsC9WQ/NoCart.png' style={{opacity: 0.4}} width='70%' />
                 </Flex>
                 :
-                Orders.map(order => <ItemCardMini title={order.productObj.title} img={order.productObj.img} cost={order.newCost ? order.newCost : order.productObj.cost}/>)}
+                Orders.map(order => <ItemCardMini title={order.productObj.title} img={order.productObj.img} cost={order.newCost ? order.newCost : order.productObj.cost} dought={order.dought ? order.dought : 'Традиційне'} size={order.size ? order.size : '33 см'}/>)}
 
             </DrawerBody>
 
