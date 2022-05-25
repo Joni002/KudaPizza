@@ -1,21 +1,14 @@
-import { Box, Button, Center, Divider, Flex, Image, Spacer, Text, useDisclosure, useToast } from "@chakra-ui/react"
-import { useDispatch } from 'react-redux';
-import { initProduct } from '../../../redux/order'
-import ItemModal from "./itemModal/itemModal"
-import { addToOrder } from "../../../redux/cart";
+import { Box, Button, Center, Divider, Flex, Image, Spacer, Text, useToast } from "@chakra-ui/react"
 
-const ItemCard = (props) => {
-    const { isOpen, onOpen, onClose } = useDisclosure()
-    const { newBadge, title, img, ingredients, cost, productObj } = props
+const AddNewItem = (props) => {
+    const { productObj } = props
     const toast = useToast()
-    const lengthIngredients = title.length <= 23 ? 2 : 1
-    const dispatch = useDispatch();
+    const lengthIngredients = productObj.title ? (productObj.title.length <= 23 ? 2 : 1) : 2
     
     return(
         <>
-            <Box onClick={onOpen}>
-                <Box onClick={() => {dispatch(initProduct({productObj})); onOpen}} 
-                cursor='pointer' 
+            <Box>
+                <Box  
                 h={{base: '130px', sm: '380px'}}
                 w={{base: '100%', sm: '230px'}}
                 bg='white'
@@ -28,7 +21,7 @@ const ItemCard = (props) => {
                 display='flex'
                 flexDirection={{base: 'row', sm: 'column'}}>
 
-                    <Box bg='#E23535' position='absolute' py={{base: '3px', sm: 1}} px={{base: 2, sm: 3}} borderRightRadius='lg' mt={{base: 2, sm: 3}} visibility={newBadge}>
+                    <Box bg='#E23535' position='absolute' py={{base: '3px', sm: 1}} px={{base: 2, sm: 3}} borderRightRadius='lg' mt={{base: 2, sm: 3}} visibility={productObj.newBadge}>
                         <Center textTransform='uppercase' color='white'>
                             new
                         </Center>
@@ -37,7 +30,7 @@ const ItemCard = (props) => {
                     <Box h={{base: '100px', sm: '230px'}} 
                     minW='100px' 
                     m={{base: 3, sm: 0}}>
-                        <Image src={img} boxSize='100%'/>
+                        <Image src={productObj.img != '' ? productObj.img : 'https://i.pinimg.com/564x/42/a5/9b/42a59bb118aaa50f3fb798356898bf17.jpg'} boxSize='100%'/>
                         <Divider display={{base: 'none', sm: 'flex'}}/>
                     </Box>
 
@@ -47,19 +40,17 @@ const ItemCard = (props) => {
                             fontWeight='500' 
                             mb={{base: 0, sm: 1}}>
 
-                                {title}
+                                {productObj.title ? productObj.title : 'Назва продукту'}
 
                             </Text>
-                            <Text noOfLines={lengthIngredients} fontSize={{base: 'sm', md: 'md'}}>{ingredients.map(ingredient => (`${ingredient}, `))}</Text>
+                            <Text noOfLines={lengthIngredients} fontSize={{base: 'sm', md: 'md'}}>{productObj.ingredients ? productObj.ingredients.map(ingredient => (`${ingredient}, `)) : ''}</Text>
                         </Box>
                         <Spacer />
                         <Flex>
                             <Button onClick={e => {
-                            dispatch(addToOrder({productObj})); 
-                            e.stopPropagation(); 
                             toast({
-                                title: 'Піца добавленна!',
-                                description: `Піца добавленна до вашого замовлення:)`,
+                                title: 'Тост!',
+                                description: `Так виглядає сповіщення`,
                                 status: 'success',
                                 position: 'bottom-right',
                                 duration: 3000,
@@ -91,19 +82,15 @@ const ItemCard = (props) => {
                             borderRadius={{base: 5, sm: 0}} 
                             bg={{base: '#FFEEE2', sm: 'none'}}>
 
-                                <Text fontSize={{base: 'sm', sm: 'md'}} color='#FF7010' fontWeight='500'>від {cost} ₴</Text>
+                                <Text fontSize={{base: 'sm', sm: 'md'}} color='#FF7010' fontWeight='500'>від {productObj.cost ? productObj.cost : '0'} ₴</Text>
 
                             </Box>
                         </Flex>
                     </Flex>
                 </Box>
             </Box>
-
-            <ItemModal isOpen={isOpen} onClose={onClose} productObj={productObj} title={title} img={img} newBadge={newBadge} ingredients={ingredients} cost={cost}/>
       </>
     )
 }
 
-ItemCard.defaultProps = {newBadge: 'hidden'}
-
-export default ItemCard
+export default AddNewItem

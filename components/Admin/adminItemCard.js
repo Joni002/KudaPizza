@@ -1,21 +1,14 @@
-import { Box, Button, Center, Divider, Flex, Image, Spacer, Text, useDisclosure, useToast } from "@chakra-ui/react"
-import { useDispatch } from 'react-redux';
-import { initProduct } from '../../../redux/order'
-import ItemModal from "./itemModal/itemModal"
-import { addToOrder } from "../../../redux/cart";
+import { Box, Button, Center, Divider, Flex, Image, Spacer, Text, useToast } from "@chakra-ui/react"
 
-const ItemCard = (props) => {
-    const { isOpen, onOpen, onClose } = useDisclosure()
+const AdminItemCard = (props) => {
     const { newBadge, title, img, ingredients, cost, productObj } = props
     const toast = useToast()
     const lengthIngredients = title.length <= 23 ? 2 : 1
-    const dispatch = useDispatch();
     
     return(
         <>
-            <Box onClick={onOpen}>
-                <Box onClick={() => {dispatch(initProduct({productObj})); onOpen}} 
-                cursor='pointer' 
+            <Box>
+                <Box  
                 h={{base: '130px', sm: '380px'}}
                 w={{base: '100%', sm: '230px'}}
                 bg='white'
@@ -55,22 +48,21 @@ const ItemCard = (props) => {
                         <Spacer />
                         <Flex>
                             <Button onClick={e => {
-                            dispatch(addToOrder({productObj})); 
-                            e.stopPropagation(); 
                             toast({
-                                title: 'Піца добавленна!',
-                                description: `Піца добавленна до вашого замовлення:)`,
+                                title: 'Елемент видалено!',
+                                description: `Елемент видалено з бази даних`,
                                 status: 'success',
                                 position: 'bottom-right',
                                 duration: 3000,
                                 isClosable: true,
                             })}} 
-                            display={{base: 'none', sm: 'inline-block'}} backgroundColor='#FF7010'
+                            display={{base: 'none', sm: 'inline-block'}} 
+                            backgroundColor='red'
                             size={'md'}
-                            _hover={{ bg: 'orange.500' }} 
+                            _hover={{ bg: 'red.600' }} 
                             _active={{
-                                bg: 'orange.300',
-                                borderColor: 'orange.500',
+                                bg: 'red.700',
+                                borderColor: 'red.800',
                             }}
                             _focus={{boxShadow: 'none'}}
                             px={7}
@@ -78,7 +70,7 @@ const ItemCard = (props) => {
                             fontSize='sm'
                             fontWeight='400'>
 
-                                Вибрати
+                                Видалити
 
                             </Button>
 
@@ -98,12 +90,10 @@ const ItemCard = (props) => {
                     </Flex>
                 </Box>
             </Box>
-
-            <ItemModal isOpen={isOpen} onClose={onClose} productObj={productObj} title={title} img={img} newBadge={newBadge} ingredients={ingredients} cost={cost}/>
       </>
     )
 }
 
-ItemCard.defaultProps = {newBadge: 'hidden'}
+AdminItemCard.defaultProps = {newBadge: 'hidden'}
 
-export default ItemCard
+export default AdminItemCard

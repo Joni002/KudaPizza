@@ -10,7 +10,6 @@ export const orderSlice = createSlice({
     initProduct: (state, action) => {
         state.getProduct = action.payload
         state.pushProduct = state.getProduct
-        // state.pushProduct[newCost] = state.getProduct.productObj.cost
     },
     delIngredient: (state, action) => {
         state.pushProduct.delIngredient = action.payload
@@ -26,7 +25,7 @@ export const orderSlice = createSlice({
     },
     newCost: (state, action) => {
         state.pushProduct.newCost = action.payload
-    }
+    },
    },
 })
 
