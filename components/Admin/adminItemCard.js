@@ -29,7 +29,7 @@ const AdminItemCard = (props) => {
                     </Box>
 
                     <Box h={{base: '100px', sm: '230px'}} 
-                    minW='100px' 
+                    w={{base: '100px', sm: '230px'}} 
                     m={{base: 3, sm: 0}}>
                         <Image src={img} boxSize='100%'/>
                         <Divider display={{base: 'none', sm: 'flex'}}/>
