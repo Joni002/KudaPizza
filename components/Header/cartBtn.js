@@ -65,7 +65,7 @@ const CartBtn = () => {
                     <Image src='https://i.ibb.co/YjsC9WQ/NoCart.png' style={{opacity: 0.4}} width='70%' />
                 </Flex>
                 :
-                Orders.map(order => <ItemCardMini title={order.productObj.title} img={order.productObj.img} cost={order.newCost ? order.newCost : order.productObj.cost} dought={order.dought ? order.dought : 'Традиційне'} size={order.size ? order.size : '33 см'}/>)}
+                Orders.map(order => <ItemCardMini key={order.id} title={order.productObj.title} img={order.productObj.img} cost={order.newCost ? order.newCost : order.productObj.cost} dought={order.dought ? order.dought : 'Традиційне'} size={order.size ? order.size : '33 см'}/>)}
 
             </DrawerBody>
 

@@ -8,7 +8,7 @@ import { AddIcon, ArrowBackIcon, CheckIcon } from "@chakra-ui/icons"
 import AddNewItem from "../components/Admin/addNewItem"
 import AddIngredientToNewItem from "../components/Admin/addIngridientToNewItem"
 
-const admin = ({ isConnected, products }) => {
+const Admin = ({ isConnected, products }) => {
 
     const [logined, setLogined] = useState(false)
     const [invalid, setInvalid] = useState(false)
@@ -221,7 +221,7 @@ const admin = ({ isConnected, products }) => {
                                                         bg='#fff'
                                                         borderRadius='md'
                                                 />
-                                                <InputRightAddon children={'₴'}/>
+                                                <InputRightAddon>₴</InputRightAddon>
                                             </InputGroup>
                                         </Box>
 
@@ -249,7 +249,7 @@ const admin = ({ isConnected, products }) => {
     }
 }
 
-export default admin
+export default Admin
 
 export async function getServerSideProps() {
     try {

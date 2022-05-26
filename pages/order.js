@@ -7,7 +7,7 @@ import Footer from "../components/Footer/footer"
 import Navbar from "../components/Header/navbar"
 import { useState } from "react"
 
-const order = () => {
+const Order = () => {
 
     //States
     //name, tel, mail
@@ -85,7 +85,7 @@ const order = () => {
         {Orders.length != 0 ? 
             (<>
 
-            {Orders.map(order => <ItemCardMini title={order.productObj.title} img={order.productObj.img} cost={order.newCost ? order.newCost : order.productObj.cost} dought={order.dought ? order.dought : 'Традиційне'} size={order.size ? order.size : '33 см'}/>)}
+            {Orders.map(order => <ItemCardMini key={order.id} title={order.productObj.title} img={order.productObj.img} cost={order.newCost ? order.newCost : order.productObj.cost} dought={order.dought ? order.dought : 'Традиційне'} size={order.size ? order.size : '33 см'}/>)}
             
             <Flex justifyContent={{base: 'center', sm: 'flex-end'}}>
                 <Text fontSize={{base: 'xl', sm: 'lg'}} color='#FF7010' fontWeight='700' mr={3}>До сплати: {allPrise} ₴</Text>
@@ -96,7 +96,7 @@ const order = () => {
 
             <Flex mb={4} flexDirection={{base: 'column', sm: 'row'}}>
                 <Box w={{base: '100%', sm: '33%'}} mr={3}>
-                    <Text mb='4px' fontSize='sm' color='#A5A5A5'>Ім'я*</Text>
+                    <Text mb='4px' fontSize='sm' color='#A5A5A5'>Ім&apos;я*</Text>
                     <Input
                         value={name}
                         onChange={nameHandleChange}
@@ -354,4 +354,4 @@ const order = () => {
     )
 }
 
-export default order
+export default Order
