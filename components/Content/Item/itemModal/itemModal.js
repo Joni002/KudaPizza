@@ -65,7 +65,7 @@ const ItemModal = (props) => {
                         <Text mt={4} mb={3} 
                         fontSize={'md'}
                         fontWeight={500}>
-                            Добавити до піци
+                            Додати до піци
                         </Text>
 
                         <AddIngredients productObj={productObj} indredientsIcon={indredientsIcon} cost={cost}/>
