@@ -1,6 +1,5 @@
 import Link from "next/link"
 import Image from 'next/image'
-import logoImg from '../public/logo.png'
 import {Text} from "@chakra-ui/react"
 import styled from '@emotion/styled'
 
@@ -24,7 +23,7 @@ const Logo = (props) => {
         <Link href='/'>
             <a>
                 <LogoBox>
-                    <Image src={logoImg} width={imgSize} height={imgSize} alt="logo"/>
+                    <Image src='/logo.png' width={imgSize} height={imgSize} alt="logo"/>
                     <Text fontSize={textSize} color='#191919' fontWeight='600' ml={3} align='center'>LikePizza</Text>
                 </LogoBox>
             </a>
