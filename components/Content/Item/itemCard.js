@@ -35,6 +35,7 @@ const ItemCard = (props) => {
                     </Box>
 
                     <Box h={{base: '100px', sm: '230px'}} 
+                    w={{base: '100px', sm: '230px'}}
                     minW='100px' 
                     m={{base: 3, sm: 0}}>
                         <Image src={img} boxSize='100%'/>
