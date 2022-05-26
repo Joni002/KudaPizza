@@ -29,7 +29,7 @@ const ItemModal = (props) => {
         <Modal isOpen={isOpen} onClose={onClose} size='4xl' motionPreset='slideInBottom'>
             <ModalOverlay backdropFilter={'blur(10px) brightness(110%)'}/>
 
-            <ModalContent mt={{base: 20}} mr={0} my={{base: 0, md: 'auto'}}  borderRadius='3xl' borderBottomRadius={{base: 0, md: '3xl'}} minH={{base: '100%', md: '550px'}} userSelect='none' w={{base: 'full', sm: '2xl', md: '3xl', lg: '4xl'}} overflowX={{base: 'clip', sm: 'initial'}}>
+            <ModalContent mt={{base: 20}} mr={0} my={{base: 0, md: 'auto'}}  borderRadius='3xl' borderBottomRadius={{base: 0, md: '3xl'}} minH={{base: '100%', md: '550px'}} userSelect='none' w={{base: 'full', sm: '2xl', md: '3xl', lg: '4xl'}} overflowX={{base: 'hidden', sm: 'initial'}}>
                 
                 {/* <Box  display={{base: 'block', sm: 'none'}} mt={-5} w='50%' h='6px' bg='rgba(250, 250, 250, 0.5)' backdropBlur='24px' position='absolute' mx="25%" borderRadius='full'></Box> */}
 
