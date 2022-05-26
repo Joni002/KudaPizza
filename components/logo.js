@@ -1,6 +1,5 @@
 import Link from "next/link"
-import Image from 'next/image'
-import {Text} from "@chakra-ui/react"
+import {Image, Text} from "@chakra-ui/react"
 import styled from '@emotion/styled'
 
 const LogoBox = styled.span`
@@ -23,7 +22,7 @@ const Logo = (props) => {
         <Link href='/'>
             <a>
                 <LogoBox>
-                    <Image src='/logo.png' width={imgSize} height={imgSize} alt="logo"/>
+                    <Image src="https://i.ibb.co/G5NY13Z/Logo.png" width={imgSize} height={imgSize} alt="logo"/>
                     <Text fontSize={textSize} color='#191919' fontWeight='600' ml={3} align='center'>LikePizza</Text>
                 </LogoBox>
             </a>
