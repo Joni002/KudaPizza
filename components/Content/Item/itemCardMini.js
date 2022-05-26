@@ -28,7 +28,7 @@ const ItemCardMini = (props) => {
             display='flex'>
 
                 <Box h='95px' 
-                minW='95px' 
+                w='95px' 
                 m={3}>
                     <Image src={img} boxSize='100%'/>
                 </Box>
