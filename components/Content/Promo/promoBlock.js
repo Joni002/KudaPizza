@@ -1,5 +1,6 @@
 import { Flex } from "@chakra-ui/react"
 import { css } from "@emotion/react"
+import Link from "next/link"
 import PromoCard from "./promoCard"
 
 const PromoBlock = () => {
@@ -18,10 +19,26 @@ const PromoBlock = () => {
             }
           `
         )}>
-            <PromoCard imgSrc='https://i.ibb.co/0KDJVHb/Group-737.png' text='3 средні піци від 290 гривень'/>
-            <PromoCard imgSrc='https://i.ibb.co/c8xmfp6/Group-738.png' text='Кэшбек 10% на самовивоз'/>
-            <PromoCard imgSrc='https://i.ibb.co/0KDJVHb/Group-737.png' text='3 средні піци від 290 гривень'/>
-            <PromoCard imgSrc='https://i.ibb.co/c8xmfp6/Group-738.png' text='Кэшбек 10% на самовивоз' mr={0}/>
+            <Link href='/post/1'>
+                <a>
+                    <PromoCard imgSrc='https://i.ibb.co/0KDJVHb/Group-737.png' text='3 средні піци від 290 гривень'/>
+                </a>
+            </Link>
+            <Link href='/post/2'>
+                <a>
+                    <PromoCard imgSrc='https://i.ibb.co/c8xmfp6/Group-738.png' text='Кэшбек 10% на самовивоз'/>
+                </a>
+            </Link>
+            <Link href='/post/3'>
+                <a>
+                    <PromoCard imgSrc='https://i.ibb.co/0KDJVHb/Group-737.png' text='3 средні піци від 290 гривень'/>
+                </a>
+            </Link>
+            <Link href='/post/4'>
+                <a>
+                    <PromoCard imgSrc='https://i.ibb.co/c8xmfp6/Group-738.png' text='Кэшбек 10% на самовивоз' mr={0}/>
+                </a>
+            </Link>
         </Flex>
     )
 }

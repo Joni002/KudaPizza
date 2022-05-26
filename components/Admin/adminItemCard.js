@@ -1,7 +1,8 @@
 import { Box, Button, Center, Divider, Flex, Image, Spacer, Text, useToast } from "@chakra-ui/react"
 
+
 const AdminItemCard = (props) => {
-    const { newBadge, title, img, ingredients, cost, productObj } = props
+    const { newBadge, title, img, ingredients, cost, id } = props
     const toast = useToast()
     const lengthIngredients = title.length <= 23 ? 2 : 1
     
@@ -48,6 +49,7 @@ const AdminItemCard = (props) => {
                         <Spacer />
                         <Flex>
                             <Button onClick={e => {
+                            
                             toast({
                                 title: 'Елемент видалено!',
                                 description: `Елемент видалено з бази даних`,
@@ -56,7 +58,6 @@ const AdminItemCard = (props) => {
                                 duration: 3000,
                                 isClosable: true,
                             })}} 
-                            display={{base: 'none', sm: 'inline-block'}} 
                             backgroundColor='red'
                             size={'md'}
                             _hover={{ bg: 'red.600' }} 
@@ -76,13 +77,12 @@ const AdminItemCard = (props) => {
 
                             <Spacer display={{base: 'none', sm: 'inline-block'}}/>
 
-                            <Box display='flex' 
+                            <Box display={{base: 'none', sm: 'flex'}} 
                             alignItems='center' 
                             py={{base: 1, sm: 0}} 
                             px={{base: 4, sm: 0}} 
                             borderRadius={{base: 5, sm: 0}} 
-                            bg={{base: '#FFEEE2', sm: 'none'}}>
-
+                            >
                                 <Text fontSize={{base: 'sm', sm: 'md'}} color='#FF7010' fontWeight='500'>від {cost} ₴</Text>
 
                             </Box>
@@ -97,3 +97,4 @@ const AdminItemCard = (props) => {
 AdminItemCard.defaultProps = {newBadge: 'hidden'}
 
 export default AdminItemCard
+

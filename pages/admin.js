@@ -5,7 +5,6 @@ import { useState } from "react"
 import Logo from "../components/logo"
 import AdminItemsBlock from "../components/Admin/adminItemsBlock"
 import { AddIcon, ArrowBackIcon, CheckIcon } from "@chakra-ui/icons"
-import AdminItemCard from "../components/Admin/adminItemCard"
 import AddNewItem from "../components/Admin/addNewItem"
 import AddIngredientToNewItem from "../components/Admin/addIngridientToNewItem"
 
@@ -256,6 +255,11 @@ export async function getServerSideProps() {
     try {
         const client = await clientPromise
         const db = client.db("KudaPizza")
+
+        // const delItem = (id) => {
+        //     db.deleteOne({_id: {id}})
+        // }
+
         // `await clientPromise` will use the default database passed in the MONGODB_URI
         // However you can use another database (e.g. myDatabase) by replacing the `await clientPromise` with the folloing code:
         //

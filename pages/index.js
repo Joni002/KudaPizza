@@ -1,7 +1,7 @@
 import { Box, Container, Heading } from '@chakra-ui/react'
 import Head from 'next/head'
 import ItemsBlock from '../components/Content/Item/itemsBlock'
-import OrderMenu from '../components/Content/OrderMenu/orderMenu'
+// import OrderMenu from '../components/Content/OrderMenu/orderMenu'
 import PromoBlock from '../components/Content/Promo/promoBlock'
 import Footer from '../components/Footer/footer'
 import Navbar from '../components/Header/navbar'
