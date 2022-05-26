@@ -23,6 +23,7 @@ const ItemModal = (props) => {
         "Томатний соуc": "https://i.ibb.co/3MLtSPm/souse.png",
         "Бекон": "https://i.ibb.co/pJtrj5y/becon.png",
         "Гриби": "https://i.ibb.co/PZLTwd2/gribi.png",
+        "?": "https://i.ibb.co/LJzDL5H/free-icon-question-sign-25333.png"
     }
 
     return(
